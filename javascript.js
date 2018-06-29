@@ -12,7 +12,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var currentTime = moment();
 var firstActualTrainTime = 0;
-var trainFrequency; 
+var trainFrequency;
 
 //Click handler for the submit button to caputre data
 $("#submit").on("click", function (event) {
@@ -51,17 +51,17 @@ database.ref().on("child_added", function (childSnapshot, prevChildKey) {
   var frequency = childSnapshot.val().freq;
 
 
-var theFirstTrain = moment(firstActualTrainTime, "HH:mm").subtract(1, "years");
-console.log(theFirstTrain);
+  var theFirstTrain = moment(firstActualTrainTime, "HH:mm").subtract(1, "years");
+  console.log(theFirstTrain);
 
-console.log(moment(currentTime).format("HH:mm"));
+  console.log(moment(currentTime).format("HH:mm"));
 
-var timeDiff = moment().diff(moment(theFirstTrain), "minutes");
-console.log(timeDiff);
+  var timeDiff = moment().diff(moment(theFirstTrain), "minutes");
+  console.log(timeDiff);
 
-var timeRemainder = timeDiff % trainFrequency;
-console.log(timeRemainder);
+  var timeRemainder = timeDiff % trainFrequency;
+  console.log(timeRemainder);
 
+  $("#publishedTrainData > tbody").append("<tr><td>") + trainName + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + moment(firstTrainTime).format("HH:mm") + "</td><td>" + minutesAway + "</td><tr>";
 
-$("#")
 });
